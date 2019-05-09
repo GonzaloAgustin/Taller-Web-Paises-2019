@@ -65,6 +65,48 @@ public class TodosLosTest extends SpringTest{
 		
 	}
 	
+	@Test @Transactional @Rollback
+	public void TestQueBuscaPaisesEuropeos(){
+		
+		Continente america = new Continente();
+		america.setNombre("America");
+		
+		Continente europa = new Continente();
+		europa.setNombre("Europa");
+		
+		Pais argentina = new Pais();
+		argentina.setNombre("Argentina");
+		argentina.setHabitantes(4000000);
+		argentina.setIdioma("Español");
+		argentina.setContinente(america);
+		
+		Pais italia = new Pais();
+		italia.setNombre("Italia");
+		italia.setHabitantes(15674652);
+		italia.setIdioma("Italiano");
+		italia.setContinente(europa);
+		
+		Pais inglaterra = new Pais();
+		inglaterra.setNombre("Inglaterra");
+		inglaterra.setHabitantes(2124524);
+		inglaterra.setIdioma("Ingles");
+		inglaterra.setContinente(europa);
+		
+		Session session = getSession();
+		session.save(america);
+		session.save(europa);
+		session.save(argentina);
+		session.save(italia);
+		session.save(inglaterra);
 
+		List<Pais> paisesEuropeos = getSession().createCriteria(Pais.class)
+				 .add(Restrictions.eq("continente", europa))
+				 .list(); 
+
+		assertThat(paisesEuropeos).isNotNull();
+		assertThat(paisesEuropeos.size()).isEqualTo(2);
+		assertThat(paisesEuropeos).hasSize(2);
+		
+	}
 	
 }
