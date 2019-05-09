@@ -13,8 +13,10 @@ public class Ciudad {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
+	
 	@ManyToOne
-	private Ciudad ciudad;
+	private Pais pais;
+	
 	@OneToOne
 	private Ubicacion ubicacion;
 	
@@ -30,11 +32,12 @@ public class Ciudad {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Ciudad getCiudad() {
-		return ciudad;
+	
+	public Pais getPais() {
+		return pais;
 	}
-	public void setCiudad(Ciudad ciudad) {
-		this.ciudad = ciudad;
+	public void setPais(Pais pais) {
+		this.pais = pais;
 	}
 	public Ubicacion getUbicacion() {
 		return ubicacion;
