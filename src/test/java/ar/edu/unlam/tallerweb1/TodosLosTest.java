@@ -166,7 +166,7 @@ public class TodosLosTest extends SpringTest{
 		assertThat(paisesAlNorteDelTropico).hasSize(1);
 		
 	}
-	/*
+	
 	@Test @Transactional @Rollback
 	public void TestQueBuscaCiudadesDelHemisferioSur() {
 
@@ -187,6 +187,8 @@ public class TodosLosTest extends SpringTest{
 		ciudad2.setUbicacionGeografica(ubicacion2);
 		
 		Session session = getSession();
+		session.save(ubicacion1);
+		session.save(ubicacion2);
 		session.save(ciudad1);
 		session.save(ciudad2);
 
@@ -196,11 +198,11 @@ public class TodosLosTest extends SpringTest{
 				.add(Restrictions.lt("ub.latitud", 0.00))
 				.list();
 		
-		for(Ciudad ciudad : ciudadesHemisferioSur){
-			assertThat(ciudad.getUbicacionGeografica().getLatitud()).isLessThanOrEqualTo(0.00);
-		}
+		assertThat(ciudadesHemisferioSur).isNotNull();
+		assertThat(ciudadesHemisferioSur.size()).isEqualTo(1);
+		assertThat(ciudadesHemisferioSur).hasSize(1);
 
 	}
-	*/
+	
 	
 }
