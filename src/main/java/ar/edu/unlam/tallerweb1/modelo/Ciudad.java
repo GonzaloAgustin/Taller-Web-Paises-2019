@@ -18,7 +18,7 @@ public class Ciudad {
 	private Pais pais;
 	
 	@OneToOne
-	private Ubicacion ubicacion;
+	private Ubicacion ubicacionGeografica;
 	
 	public Long getId() {
 		return id;
@@ -39,13 +39,13 @@ public class Ciudad {
 	public void setPais(Pais pais) {
 		this.pais = pais;
 	}
-	public Ubicacion getUbicacion() {
-		return ubicacion;
+	public Ubicacion getUbicacionGeografica() {
+		return ubicacionGeografica;
 	}
-	public void setUbicacion(Ubicacion ubicacion) {
-		this.ubicacion = ubicacion;
+	public void setUbicacionGeografica(Ubicacion ubicacionGeografica) {
+		this.ubicacionGeografica = ubicacionGeografica;
 	}
-	
+
 	
 
 }
