@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import javax.swing.border.EmptyBorder;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ControladorPunto6 {
 	
-	@RequestMapping(path="/punto6/{x}/{y}")
+	@RequestMapping(path="/punto6/{cadena}/{operacion}")
 	public ModelAndView punto6(@PathVariable String cadena, @PathVariable String operacion){
 	
 		ModelMap modelo = new ModelMap();
@@ -18,7 +20,9 @@ public class ControladorPunto6 {
 		modelo.put("operacion", operacion);
 		
 		String resultado;
-		String operacionInvalida = "Operación no encontrada, por favor escribir:\npasarAMayuscula\npasarAMinuscula";
+		String operacionInvalida = "Operación no encontrada, por favor escribir:\npasarAMayuscula\npasarAMinuscula"
+				
+				+ "\ninvertirOrden\no contarCaracteres";
 		
 		switch(operacion){
 			
@@ -33,7 +37,7 @@ public class ControladorPunto6 {
 				break;
 			
 			case "invertirOrden":
-				String resultado2 = null;
+				String resultado2 = "";
 				
 				for (int i= cadena.length()-1; i>=0; i--){
 					resultado2 = resultado2 + cadena.charAt(i);		
